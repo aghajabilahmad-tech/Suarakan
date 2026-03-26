@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>suarakan</title>
 </head>
 <body>
-hallo world
+    <h2>Suarakan.com</h2>
+
+    <input type="text" id="judul"  placeholder="Judul Laporan"><br><br>
+
+    <textarea id="isi" placeholder="Isi Laporan"></textarea><br><br>
+
+    <input type="date" id="tanggal"><br><br>
+
+    <input type="text" id="lokasi" placeholder="Lokasi Kejadian"><br><br>
+
+    <select id="instansi">
+        <option value="">Pilih Instasi</option>
+        <option>Dinas Pendidikan</option>
+        <option>Dinas Kesehatan</option>
+        <option>Pemerintah Daerah</option>
+    </select><br><br>
+
+     <select id="kategori">
+        <option value="">Pilih Kategori</option>
+        <option>Pengaduan</option>
+        <option>Aspirasi</option>
+        <option>Permintaan informasi</option>
+
+    </select><br><br>
+
+    <button onclick="tambahData()">Kirim</button>
+
+    <h2>Data Aspirasi</h2>
+    <ul id="list-Data"></ul>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
