@@ -3,27 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
     <title>suarakan</title>
 </head>
 <body>
+<nav class="navbar">
+  <div class="nav-content">
+    <div class="logo">Suarakan</div>
+
+    <ul class="menu">
+      <li>Beranda</li>
+      <li>Buat Laporan</li>
+      <li>Daftar Laporan</li>
+      <li>Notifikasi</li>
+    </ul>
+
+    <div class="nav-right">
+  <div class="social">
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-tiktok"></i>
+    <i class="fa-brands fa-youtube"></i>
+  </div>
+
+    <button class="btn">Hasil Laporan</button>
+  </div>
+</nav>
+<main class="main">
+    <div class="content">
     <h2>Suarakan.com</h2>
 
-    <input type="text" id="judul"  placeholder="Judul Laporan"><br><br>
+    <input type="text" id="judul"  placeholder="Judul Laporan" class="form-input"><br><br>
 
-    <textarea id="isi" placeholder="Isi Laporan"></textarea><br><br>
+    <textarea id="isi" placeholder="Isi Laporan" class="form-input"></textarea><br><br>
 
-    <input type="date" id="tanggal"><br><br>
+    <input type="date" id="tanggal" class="form-input"><br><br>
 
-    <input type="text" id="lokasi" placeholder="Lokasi Kejadian"><br><br>
+    <input type="text" id="lokasi" placeholder="Lokasi Kejadian" class="form-input"><br><br>
 
-    <select id="instansi">
+    <select id="instansi" class="form-input">
         <option value="">Pilih Instasi</option>
         <option>Dinas Pendidikan</option>
         <option>Dinas Kesehatan</option>
         <option>Pemerintah Daerah</option>
     </select><br><br>
 
-     <select id="kategori">
+     <select id="kategori" class="form-input">
         <option value="">Pilih Kategori</option>
         <option>Pengaduan</option>
         <option>Aspirasi</option>
@@ -31,11 +57,12 @@
 
     </select><br><br>
 
-    <button onclick="tambahData()">Kirim</button>
+    <button onclick="tambahData()" class="tombol">Kirim</button>
 
     <h2>Data Aspirasi</h2>
     <ul id="list-Data"></ul>
-
+         </div>
+    </main>
     <script src="script.js"></script>
 
 </body>
