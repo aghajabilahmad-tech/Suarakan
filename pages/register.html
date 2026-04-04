@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Sign in</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Sign up</title>
 </head>
 <body>
     
     <div class="wrapper">
         <div class="login_box">
             <div class="login_header">
-                <span>Sign in</span>
+                <span>Sign up</span>
             </div>
             <div class="input_box">
                 <input type="text" id="user" class="input-field" required>
@@ -21,15 +20,25 @@
                 <i class="bx bx-user icon"></i>
             </div>
             <div class="input_box">
+                <input type="email" id="email" class="input-field" required>
+                <label for="email" class="label">Email</label>
+                <i class="bx bx-envelope icon"></i>
+            </div>
+            <div class="input_box">
                 <input type="password" id="pass" class="input-field" required>
                 <label for="pass" class="label">Password</label>
                 <i class="bx bx-lock-alt icon"></i>
-            </div>            
+            </div>
+            <div class="input_box">
+                <input type="password" id="con-pass" class="input-field" required>
+                <label for="con-pass" class="label">Confirm Password</label>
+                <i class="bx bx-lock-check icon"></i>
+            </div>
             <div class="input">
                 <input type="submit" class="input-submit" value="Confirm">
             </div>
             <div class="register">
-                <span>Don't have an account? <a href="register.html">Sign up</a></span>
+                <span>Already have an account? <a href="login.html">Sign in</a></span>
             </div>
         </div>
     </div>
