@@ -1,0 +1,135 @@
+       body {
+  margin: 0;
+  height: 200vh;
+  background: url("../img/national.png") no-repeat center/cover;
+  font-family: Arial;
+      background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 100vh;            
+ 
+}
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  margin-top: 20px;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 1px;
+  
+}
+
+/* ISI NAVBAR */
+.nav-content {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 30px;
+  background: rgba(25, 136, 46, 0.6);
+  backdrop-filter: blur(10px);
+  /*trapesium */
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+
+  border-radius: 12px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.social {
+  display: flex;
+  gap: 10px; 
+}
+
+.menu {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  color: white;
+}
+.menu a {
+      text-decoration: none;
+  display: inline-block;
+}
+.menu li {
+  cursor: pointer;
+}
+
+.t {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #3a2a1f;
+  cursor: pointer;
+  transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.t:hover {
+  transform: scale(1.1); /* ⬅️ ini yang benar */
+  letter-spacing: 4px;
+}
+.btn {
+  background: #f4b400;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+}
+
+.container{
+    display: flex;
+  align-items: center;   
+  height: 100vh;        
+  padding: 0 50px;
+  width: 100vh;
+}
+
+.container{
+   
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.left{
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 1px;
+      max-width: 800px;
+             color: gray;
+
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+.left h1{
+    font-size: 79px;
+     font-family: 'Montserrat', sans-serif;
+     margin-top: 5px;
+       line-height: 0.5;
+  
+}
+
+.left p{
+     line-height: 1.5;
+}

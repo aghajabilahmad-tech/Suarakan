@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Sign in</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Sign up</title>
 </head>
 <body>
     <div class="wrapper">
         <div class="login_box">
-            <div class="login_header"><span>Sign in</span></div>
+            <div class="login_header"><span>Sign up</span></div>
             <div class="input_box">
                 <input type="email" id="email" class="input-field" required>
                 <label for="email" class="label">Email</label>
@@ -20,19 +20,19 @@
                 <input type="password" id="pass" class="input-field" required>
                 <label for="pass" class="label">Password</label>
                 <i class="bx bx-lock-alt icon"></i>
-            </div>            
+            </div>
             <div class="input">
-                <input type="submit" id="loginBtn" class="input-submit" value="Confirm">
+                <input type="submit" id="regBtn" class="input-submit" value="Register">
             </div>
             <div class="register" style="margin-top: 15px;">
-                <span>Don't have an account? <a href="register.html">Sign up</a></span>
+                <span>Already have an account? <a href="login.html">Sign in</a></span>
             </div>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDHO-l0CaHaonoQYO0GUbtNwsJBX1rEewQ",
@@ -46,21 +46,22 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        document.getElementById('loginBtn').addEventListener('click', async (e) => {
+        document.getElementById('regBtn').addEventListener('click', async (e) => {
             e.preventDefault();
             const email = document.querySelector('#email').value;
             const password = document.querySelector('#pass').value;
 
-            if (email === "" || password === "") {
-                alert("Isi dulu email dan passwordnya!");
+            if (password.length < 6) {
+                alert("Password minimal 6 karakter!");
                 return;
             }
 
             try {
-                await signInWithEmailAndPassword(auth, email, password);
-                window.location.href = "index.html"; 
+                await createUserWithEmailAndPassword(auth, email, password);
+                alert("Akun berhasil dibuat! Silakan Login.");
+                window.location.href = "login.html";
             } catch (err) {
-                alert("Login Gagal: Periksa kembali email & password!");
+                alert("Gagal Daftar: " + err.message);
             }
         });
     </script>
