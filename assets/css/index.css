@@ -1,12 +1,6 @@
        body {
   margin: 0;
-  height: 200vh;
-  background: url("../img/10284638.jpg") no-repeat center/cover;
   font-family: Arial;
-      background-size: cover;      
-    background-position: center; 
-    background-repeat: no-repeat;
-    height: 100vh;               
 }
 
 /* NAVBAR UTAMA */
@@ -96,13 +90,14 @@
 }
 
 
-.main {
-  padding-top: 100px; 
-  
-  display: flex;
-  justify-content: center; 
-
-
+.jjik{
+background:url("../img/10284638.jpg") no-repeat center/cover;
+min-height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding-top:120px;
+padding-bottom:50px;
 }
 
 
@@ -167,4 +162,31 @@ background: linear-gradient(45deg, #4CAF50, #2e7d32);
 .tombol:hover{
           transform: scale(1.05);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#output{
+background:#f5f5f5;
+padding:40px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+#output ul{
+width:60%;
+padding:0;
+}
+
+#list-Data li{
+list-style:none;
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+#list-Data li:hover{
+transform:translateY(-5px);
 }
