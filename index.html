@@ -9,61 +9,79 @@
     <title>suarakan</title>
 </head>
 <body>
-<nav class="navbar">
-  <div class="nav-content">
-    <div class="logo">Suarakan</div>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Suarakan</div>
+            <ul class="menu">
+                <li id="user-display" class="username"><b>Memuat...</b></li> 
+                <li>Beranda</li>
+                <li>Buat Laporan</li>
+                <li>Daftar Laporan</li>                
+            </ul>
+            <div class="nav-right">
+                <button class="btn" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
 
-    <ul class="menu">
-      <li>Beranda</li>
-      <li>Buat Laporan</li>
-      <li>Daftar Laporan</li>
-      <li>Notifikasi</li>
-    </ul>
+    <main class="main">
+        <div class="content">
+            <h2>Suarakan.com</h2>
+            <input type="text" id="judul" placeholder="Judul Laporan" class="form-input"><br><br>
+            <textarea id="isi" placeholder="Isi Laporan" class="form-input"></textarea><br><br>
+            <input type="date" id="tanggal" class="form-input"><br><br>
+            <input type="text" id="lokasi" placeholder="Lokasi Kejadian" class="form-input"><br><br>
+            <select id="instansi" class="form-input">
+                <option value="">Pilih Instansi</option>
+                <option>Dinas Pendidikan</option>
+                <option>Dinas Kesehatan</option>
+                <option>Pemerintah Daerah</option>
+            </select><br><br>
+            <select id="kategori" class="form-input">
+                <option value="">Pilih Kategori</option>
+                <option>Pengaduan</option>
+                <option>Aspirasi</option>
+                <option>Permintaan informasi</option>
+            </select><br><br>
+            <button onclick="tambahData()" class="tombol">Kirim</button>
 
-    <div class="nav-right">
-  <div class="social">
-    <i class="fa-brands fa-instagram"></i>
-    <i class="fa-brands fa-tiktok"></i>
-    <i class="fa-brands fa-youtube"></i>
-  </div>
-
-    <button class="btn">Hasil Laporan</button>
-  </div>
-</nav>
-<main class="main">
-    <div class="content">
-    <h2>Suarakan.com</h2>
-
-    <input type="text" id="judul"  placeholder="Judul Laporan" class="form-input"><br><br>
-
-    <textarea id="isi" placeholder="Isi Laporan" class="form-input"></textarea><br><br>
-
-    <input type="date" id="tanggal" class="form-input"><br><br>
-
-    <input type="text" id="lokasi" placeholder="Lokasi Kejadian" class="form-input"><br><br>
-
-    <select id="instansi" class="form-input">
-        <option value="">Pilih Instasi</option>
-        <option>Dinas Pendidikan</option>
-        <option>Dinas Kesehatan</option>
-        <option>Pemerintah Daerah</option>
-    </select><br><br>
-
-     <select id="kategori" class="form-input">
-        <option value="">Pilih Kategori</option>
-        <option>Pengaduan</option>
-        <option>Aspirasi</option>
-        <option>Permintaan informasi</option>
-
-    </select><br><br>
-
-    <button onclick="tambahData()" class="tombol">Kirim</button>
-
-    <h2>Data Aspirasi</h2>
-    <ul id="list-Data"></ul>
-         </div>
+            <h2>Data Aspirasi</h2>
+            <ul id="list-Data"></ul>
+        </div>
     </main>
-    <script src="script.js"></script>
 
+    <script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDHO-l0CaHaonoQYO0GUbtNwsJBX1rEewQ",
+            authDomain: "suarakan-app.firebaseapp.com",
+            projectId: "suarakan-app",
+            storageBucket: "suarakan-app.firebasestorage.app",
+            messagingSenderId: "373793823249",
+            appId: "1:373793823249:web:1cf2752f7380ded0262fb0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // SATPAM CEK LOGIN
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const usernameSaja = user.email.split('@')[0]; 
+                document.getElementById('user-display').innerText = "Halo, " + usernameSaja;
+                console.log(usernameSaja);
+            } else {
+                window.location.href = "login.html";
+            }
+        });
+
+        // LOGOUT
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth).then(() => { window.location.href = "login.html"; });
+        });
+    </script>
 </body>
 </html>

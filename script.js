@@ -53,3 +53,17 @@ function hapusData(index) {
         tampilkanData();
     }
 }
+
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User sudah login, tampilkan emailnya di dashboard
+    console.log("Selamat datang: " + user.email);
+    document.getElementById("user-display-name").innerText = user.email;
+  } else {
+    // User belum login, paksa ke halaman login
+    window.location.href = "login.html";
+  }
+});
