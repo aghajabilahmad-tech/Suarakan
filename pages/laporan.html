@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+    <title>suarakan</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Suarakan</div>
+            <ul class="menu">
+                <li id="user-display" class="username" style="color: #f4b400; font-weight: bold;">Memuat...</li> 
+                <li><a href="beranda.html" class="t">Beranda</a></li>
+                <li><a href="laporan.html" class="t">Buat Laporan</a></li>
+                <li><a href="#output" class="t">Daftar Laporan</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="social">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <button class="btn" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="jjik">
+        <div class="content">
+            <h2>Suarakan.com</h2>
+            <input type="text" id="judul" placeholder="Judul Laporan" class="form-input"><br><br>
+            <textarea id="isi" placeholder="Isi Laporan" class="form-input"></textarea><br><br>
+            <input type="date" id="tanggal" class="form-input"><br><br>
+            <input type="text" id="lokasi" placeholder="Lokasi Kejadian" class="form-input"><br><br>
+            
+            <select id="instansi" class="form-input">
+                <option value="">Pilih Instansi</option>
+                <option>Dinas Pendidikan</option>
+                <option>Dinas Kesehatan</option>
+                <option>Pemerintah Daerah</option>
+            </select><br><br>
+
+            <select id="kategori" class="form-input">
+                <option value="">Pilih Kategori</option>
+                <option>Pengaduan</option>
+                <option>Aspirasi</option>
+                <option>Permintaan informasi</option>
+            </select><br><br>
+
+            <button onclick="tambahData()" class="tombol">Kirim</button>
+        </div>
+    </section>
+
+    <section id="output">
+        <div class="content">
+            <h2>Data Aspirasi</h2>
+            <ul id="list-Data"></ul>  
+        </div>
+    </section>
+
+    <script src="assets/js/script.js"></script> 
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDHO-l0CaHaonoQYO0GUbtNwsJBX1rEewQ",
+            authDomain: "suarakan-app.firebaseapp.com",
+            projectId: "suarakan-app",
+            storageBucket: "suarakan-app.firebasestorage.app",
+            messagingSenderId: "373793823249",
+            appId: "1:373793823249:web:1cf2752f7380ded0262fb0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Satpam Cek Login & Potong Nama (@)
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const usernameSaja = user.email.split('@')[0]; 
+                document.getElementById('user-display').innerText = "Halo, " + usernameSaja;
+            } else {
+                // Jika belum login, tendang ke login.html
+                window.location.href = "login.html";
+            }
+        });
+
+        // Tombol Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth).then(() => { 
+                window.location.href = "login.html"; 
+            }).catch((error) => {
+                console.error("Logout Error:", error);
+            });
+        });
+    </script>
+</body>
+</html>
